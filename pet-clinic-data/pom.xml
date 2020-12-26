@@ -49,11 +49,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
                         <configuration>
-                            <skip>true</skip>
                             <excludes>
                                 <exclude>
                                     <groupId>org.projectlombok</groupId>
