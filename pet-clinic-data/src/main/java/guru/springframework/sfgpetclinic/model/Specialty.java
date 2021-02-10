@@ -4,12 +4,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
-@Setter
 @Getter
+@Setter
 @EqualsAndHashCode
-public class Vet extends Person {
+public class Specialty extends BaseEntity {
 
-    private Set<Specialty> specialties;
+    private String description;
 }
