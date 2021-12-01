@@ -6,13 +6,16 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Getter
 @Setter
 @EqualsAndHashCode
 @Entity
 @Table(name = "pets")
-public class Pet extends BaseEntity{
+public class Pet extends BaseEntity {
     @Column(name = "name")
     private String name;
 
@@ -26,4 +29,7 @@ public class Pet extends BaseEntity{
 
     @Column(name = "birthDate")
     private LocalDate birthDate;
+
+    @OneToMany(cascade = ALL, mappedBy = "pet")
+    private Set<Visit> visits;
 }
