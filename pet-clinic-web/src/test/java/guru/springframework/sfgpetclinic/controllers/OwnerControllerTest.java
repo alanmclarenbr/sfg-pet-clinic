@@ -33,8 +33,8 @@ class OwnerControllerTest {
     @InjectMocks
     private OwnerController ownerController;
 
-    Set<Owner> owners;
-    MockMvc mockMvc;
+    private Set<Owner> owners;
+    private MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
