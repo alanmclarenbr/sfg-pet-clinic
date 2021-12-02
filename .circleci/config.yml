@@ -24,14 +24,18 @@ jobs:
           command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
+          name: directories
+          command:
+           mkdir -p /tmp/artifacts
+           mkdir -p /tmp/tests
+
+      - run:
           name: Test
           command: mvn test
       - store_artifacts:
-          path: artifact
-          destination: artifacts
+          path: /tmp/artifacts
       - store_test_results:
-          path: tests
-          destination: test-results
+          path: /tmp/tests
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
