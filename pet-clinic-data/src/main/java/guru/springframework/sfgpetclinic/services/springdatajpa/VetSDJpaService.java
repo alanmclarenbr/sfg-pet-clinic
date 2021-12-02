@@ -3,11 +3,13 @@ package guru.springframework.sfgpetclinic.services.springdatajpa;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.repositories.VetRepository;
 import guru.springframework.sfgpetclinic.services.VetService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 public class VetSDJpaService implements VetService {
 
@@ -34,6 +36,7 @@ public class VetSDJpaService implements VetService {
 
     @Override
     public Vet save(Vet object) {
+        log.debug("saving {}", object);
         return vetRepository.save(object);
     }
 

@@ -3,10 +3,14 @@ package guru.springframework.sfgpetclinic.services.springdatajpa;
 import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.repositories.VisitRepository;
 import guru.springframework.sfgpetclinic.services.VisitService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
+@Service
 public class VisitSDJpaService implements VisitService {
 
     private final VisitRepository visitRepository;
@@ -32,6 +36,7 @@ public class VisitSDJpaService implements VisitService {
 
     @Override
     public Visit save(Visit object) {
+        log.debug("saving {}", object);
         return visitRepository.save(object);
     }
 

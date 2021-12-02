@@ -3,10 +3,14 @@ package guru.springframework.sfgpetclinic.services.springdatajpa;
 import guru.springframework.sfgpetclinic.model.Speciality;
 import guru.springframework.sfgpetclinic.repositories.SpecialityRepository;
 import guru.springframework.sfgpetclinic.services.SpecialityService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
+@Service
 public class SpecialitySDJpaService implements SpecialityService {
 
     private final SpecialityRepository specialityRepository;
@@ -32,6 +36,7 @@ public class SpecialitySDJpaService implements SpecialityService {
 
     @Override
     public Speciality save(Speciality object) {
+        log.debug("saving {}", object);
         return specialityRepository.save(object);
     }
 

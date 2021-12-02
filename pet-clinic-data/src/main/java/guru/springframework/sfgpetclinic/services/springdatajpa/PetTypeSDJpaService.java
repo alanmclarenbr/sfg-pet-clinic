@@ -3,10 +3,14 @@ package guru.springframework.sfgpetclinic.services.springdatajpa;
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.repositories.PetTypeRepository;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
+@Service
 public class PetTypeSDJpaService implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
@@ -32,6 +36,7 @@ public class PetTypeSDJpaService implements PetTypeService {
 
     @Override
     public PetType save(PetType object) {
+        log.debug("saving {}", object);
         return petTypeRepository.save(object);
     }
 
