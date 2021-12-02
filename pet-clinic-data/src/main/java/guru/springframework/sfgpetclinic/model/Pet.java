@@ -1,9 +1,7 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -19,12 +17,20 @@ import static javax.persistence.CascadeType.ALL;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
+
+    @Builder
+    public Pet(Long id, String name, Owner owner, PetType petType, LocalDate birthDate, Set<Visit> visits) {
+        super(id);
+        this.name = name;
+        this.owner = owner;
+        this.petType = petType;
+        this.birthDate = birthDate;
+        this.visits = visits;
+    }
+
     @Column(name = "name")
     private String name;
 

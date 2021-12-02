@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import java.util.Set;
 
+import static guru.springframework.sfgpetclinic.model.Pet.builder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
@@ -27,11 +28,11 @@ class PetSDJpaServiceTest {
 
     @Test
     void shouldReturnWhenFindAll() {
-        Pet charlie = Pet.builder()
+        Pet charlie = builder()
                 .name("Charlie")
                 .build();
 
-        Pet jake = Pet.builder()
+        Pet jake = builder()
                 .name("Jake")
                 .build();
 
@@ -44,18 +45,19 @@ class PetSDJpaServiceTest {
 
     @Test
     void shouldReturnWhenFindById() {
-        Pet jake = Pet.builder()
+        Pet jake = builder()
+                .id(1L)
                 .name("Jake")
                 .build();
 
-        when(petRepository.findById(1L)).thenReturn(Optional.of(jake));
+        when(petRepository.findById(jake.getId())).thenReturn(Optional.of(jake));
 
-        assertThat(petSDJpaService.findById(1L)).isEqualTo(jake);
+        assertThat(petSDJpaService.findById(jake.getId())).isEqualTo(jake);
     }
 
     @Test
     void shouldReturnWhenSave() {
-        Pet jake = Pet.builder()
+        Pet jake = builder()
                 .name("Jake")
                 .build();
 
@@ -66,7 +68,7 @@ class PetSDJpaServiceTest {
 
     @Test
     void verifyDeleteInteractionWhenDelete() {
-        Pet jake = Pet.builder()
+        Pet jake = builder()
                 .name("Jake")
                 .build();
 

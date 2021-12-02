@@ -46,12 +46,13 @@ class PetTypeSDJpaServiceTest {
     @Test
     void shouldReturnWhenFindById() {
         PetType dog = builder()
+                .id(1L)
                 .name("Dog")
                 .build();
 
-        when(petTypeRepository.findById(1L)).thenReturn(Optional.of(dog));
+        when(petTypeRepository.findById(dog.getId())).thenReturn(Optional.of(dog));
 
-        assertThat(petTypeSDJpaService.findById(1L)).isEqualTo(dog);
+        assertThat(petTypeSDJpaService.findById(dog.getId())).isEqualTo(dog);
     }
 
     @Test

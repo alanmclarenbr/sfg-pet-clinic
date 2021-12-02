@@ -48,13 +48,14 @@ class OwnerSDJpaServiceTest {
     @Test
     void shouldReturnWhenFindById() {
         Owner alan = builder()
+                .id(1L)
                 .firstName("Alan")
                 .lastName("Santo")
                 .build();
 
-        when(ownerRepository.findById(1L)).thenReturn(Optional.of(alan));
+        when(ownerRepository.findById(alan.getId())).thenReturn(Optional.of(alan));
 
-        assertThat(ownerSDJpaService.findById(1L)).isEqualTo(alan);
+        assertThat(ownerSDJpaService.findById(alan.getId())).isEqualTo(alan);
     }
 
     @Test

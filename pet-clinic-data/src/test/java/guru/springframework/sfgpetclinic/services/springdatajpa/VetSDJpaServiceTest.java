@@ -48,13 +48,14 @@ class VetSDJpaServiceTest {
     @Test
     void shouldReturnWhenFindById() {
         Vet alan = builder()
+                .id(1L)
                 .firstName("Alan")
                 .lastName("Santo")
                 .build();
 
-        when(vetRepository.findById(1L)).thenReturn(Optional.of(alan));
+        when(vetRepository.findById(alan.getId())).thenReturn(Optional.of(alan));
 
-        assertThat(vetSDJpaService.findById(1L)).isEqualTo(alan);
+        assertThat(vetSDJpaService.findById(alan.getId())).isEqualTo(alan);
     }
 
     @Test

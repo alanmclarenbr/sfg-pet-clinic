@@ -19,8 +19,8 @@ import static javax.persistence.CascadeType.ALL;
 public class Owner extends Person {
 
     @Builder
-    public Owner(String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
-        super(firstName, lastName);
+    public Owner(Long id, String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+        super(id, firstName, lastName);
         this.address = address;
         this.city = city;
         this.telephone = telephone;

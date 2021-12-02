@@ -46,12 +46,13 @@ class VisitSDJpaServiceTest {
     @Test
     void shouldReturnWhenFindById() {
         Visit jake = builder()
+                .id(1L)
                 .description("Jake")
                 .build();
 
-        when(visitRepository.findById(1L)).thenReturn(Optional.of(jake));
+        when(visitRepository.findById(jake.getId())).thenReturn(Optional.of(jake));
 
-        assertThat(visitSDJpaService.findById(1L)).isEqualTo(jake);
+        assertThat(visitSDJpaService.findById(jake.getId())).isEqualTo(jake);
     }
 
     @Test

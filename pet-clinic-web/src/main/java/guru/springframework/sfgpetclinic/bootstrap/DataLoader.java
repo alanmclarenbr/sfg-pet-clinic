@@ -23,40 +23,44 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
-        PetType dog = new PetType();
-        dog.setName("Dog");
+        PetType dog = PetType.builder()
+                .name("Dog")
+                .build();
         PetType savedDogType = petTypeService.save(dog);
 
-        PetType cat = new PetType();
-        cat.setName("Cat");
+        PetType cat = PetType.builder()
+                .name("Cat")
+                .build();
         PetType savedCat = petTypeService.save(cat);
 
-        Owner owner1 = new Owner();
-        owner1.setFirstName("Michael");
-        owner1.setLastName("Weston");
+        Owner owner1 = Owner.builder()
+                .firstName("Michael")
+                .lastName("Weston")
+                .build();
 
         ownerService.save(owner1);
 
-        Owner owner2 = new Owner();
-        owner2.setFirstName("Fiona");
-        owner2.setLastName("Glenanne");
+        Owner owner2 = Owner.builder()
+                .firstName("Fiona")
+                .lastName("Glenanne")
+                .build();
 
         ownerService.save(owner2);
 
         System.out.println("Loading owners.");
 
-        Vet vet1 = new Vet();
-        vet1.setFirstName("Sam");
-        vet1.setLastName("Axe");
-
+        Vet vet1 = Vet.builder()
+                .firstName("Sam")
+                .lastName("Axe")
+                .build();
         vetService.save(vet1);
 
-        Vet vet2 = new Vet();
-        vet2.setFirstName("Jessie");
-        vet2.setLastName("Porter");
-
+        Vet vet2 = Vet.builder()
+                .firstName("Jessie")
+                .lastName("Porter")
+                .build();
         vetService.save(vet2);
 
         System.out.println("Loading Vets.");

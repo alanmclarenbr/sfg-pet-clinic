@@ -20,8 +20,8 @@ import static javax.persistence.FetchType.EAGER;
 public class Vet extends Person {
 
     @Builder
-    public Vet(String firstName, String lastName, Set<Speciality> specialties) {
-        super(firstName, lastName);
+    public Vet(Long id, String firstName, String lastName, Set<Speciality> specialties) {
+        super(id, firstName, lastName);
         this.specialties = specialties;
     }
 

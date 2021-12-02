@@ -46,12 +46,13 @@ class SpecialitySDJpaServiceTest {
     @Test
     void shouldReturnWhenFindById() {
         Speciality mammals = builder()
+                .id(1L)
                 .description("Mammals")
                 .build();
 
-        when(specialityRepository.findById(1L)).thenReturn(Optional.of(mammals));
+        when(specialityRepository.findById(mammals.getId())).thenReturn(Optional.of(mammals));
 
-        assertThat(specialitySDJpaService.findById(1L)).isEqualTo(mammals);
+        assertThat(specialitySDJpaService.findById(mammals.getId())).isEqualTo(mammals);
     }
 
     @Test
