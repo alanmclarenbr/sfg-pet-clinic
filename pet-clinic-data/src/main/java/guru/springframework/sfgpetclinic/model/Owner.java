@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 @Getter
 @Setter
@@ -38,6 +39,6 @@ public class Owner extends Person {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToMany(cascade = ALL, mappedBy = "owner")
+    @OneToMany(cascade = ALL, mappedBy = "owner", fetch = EAGER)
     private Set<Pet> pets;
 }
