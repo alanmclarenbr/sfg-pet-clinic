@@ -22,7 +22,7 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 @Controller
 @RequestMapping("/owners")
 public class OwnerController {
-    private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
+    private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm.html";
 
     private final OwnerService ownerService;
 
