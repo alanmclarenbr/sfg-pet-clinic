@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
@@ -27,7 +28,7 @@ public class Owner extends Person {
         this.address = address;
         this.city = city;
         this.telephone = telephone;
-        this.pets = pets;
+        this.pets = pets != null ? pets : new HashSet<>();
     }
 
     @Column(name = "address")
@@ -41,4 +42,16 @@ public class Owner extends Person {
 
     @OneToMany(cascade = ALL, mappedBy = "owner", fetch = EAGER)
     private Set<Pet> pets;
+
+    public Pet getPet(String name) {
+        return getPet(name, false);
+    }
+
+    public Pet getPet(String name, boolean ignoreNew) {
+        return pets.stream()
+                .filter(p -> !ignoreNew || !p.isNew())
+                .filter(p -> p.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
 }
