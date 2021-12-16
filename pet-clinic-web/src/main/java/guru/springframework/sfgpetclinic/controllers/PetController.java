@@ -52,7 +52,7 @@ public class PetController {
 
     @GetMapping("pets/new")
     public String initCreationForm(Owner owner, Model model) {
-        Pet pet = Pet.builder().build();
+        Pet pet = Pet.builder().owner(owner).build();
         owner.getPets().add(pet);
 
         model.addAttribute("pet", pet);

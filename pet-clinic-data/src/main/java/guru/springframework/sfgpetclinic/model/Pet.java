@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
@@ -30,7 +31,7 @@ public class Pet extends BaseEntity {
         this.owner = owner;
         this.petType = petType;
         this.birthDate = birthDate;
-        this.visits = visits;
+        this.visits = visits != null ? visits : new HashSet<>();
     }
 
     @Column(name = "name")
