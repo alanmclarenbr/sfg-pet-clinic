@@ -1,7 +1,9 @@
 package guru.springframework.sfgpetclinic.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -16,18 +18,20 @@ import static javax.persistence.FetchType.EAGER;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "vets")
 public class Vet extends Person {
 
     @Builder
-    public Vet(Long id, String firstName, String lastName, Set<Speciality> specialties) {
+    public Vet(Long id, String firstName, String lastName, Set<Speciality> specialities) {
         super(id, firstName, lastName);
-        this.specialties = specialties;
+        this.specialities = specialities;
     }
 
     @ManyToMany(fetch = EAGER)
     @JoinTable(name = "vet_specialities",
             joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "speciality_id"))
-    private Set<Speciality> specialties;
+    private Set<Speciality> specialities;
 }

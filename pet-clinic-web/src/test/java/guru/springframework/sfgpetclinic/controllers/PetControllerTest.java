@@ -77,10 +77,12 @@ class PetControllerTest {
         mockMvc.perform(post("/owners/1/pets/new"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
+
+        verify(petService).save(any());
     }
 
     @Test
-    void initUpdateForm() throws Exception{
+    void initUpdateForm() throws Exception {
         when(ownerService.findById(anyLong())).thenReturn(owner);
         when(petTypeService.findAll()).thenReturn(petTypes);
         when(petService.findById(anyLong())).thenReturn(Pet.builder().id(2L).build());
@@ -104,4 +106,18 @@ class PetControllerTest {
         verify(petService).save(any());
     }
 
+    @Test
+    void populatePetTypes() {
+        //todo impl
+    }
+
+    @Test
+    void findOwner() {
+        //todo impl
+    }
+
+    @Test
+    void initOwnerBinder() {
+        //todo impl
+    }
 }
